@@ -1,7 +1,7 @@
 # Users-api
 Api to manage users data
 
-# Techinal debits:
+# Technical debits:
 
 - Token authentication for authenticate requests to the endpoints;
 - Improve handle errors;
