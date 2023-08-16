@@ -8,8 +8,13 @@ import (
 	"users-api/internal/core/services/processors"
 )
 
-func main() {
+// @title Users API
+// @description Api to maintain and manage users data
+// @version 1.0
+// @host localhost:8080
+// @basePath /
 
+func main() {
 	conf := config.New()
 	validator := domain.NewValidator()
 	options := &domain.Options{

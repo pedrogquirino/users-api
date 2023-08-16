@@ -7,5 +7,5 @@ Api to manage users data
 - Improve handle errors;
 - Improve request validations;
 - Improve logs and observability;
-- Swagger documenation;
+- Improve Swagger documenation;
 

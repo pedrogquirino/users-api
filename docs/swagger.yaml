@@ -1,0 +1,152 @@
+basePath: /
+definitions:
+  address.AddressRequest:
+    properties:
+      district:
+        type: string
+      number:
+        type: string
+      street:
+        type: string
+      zipcode:
+        type: string
+    required:
+    - district
+    - number
+    - street
+    - zipcode
+    type: object
+  address.AddressResponse:
+    properties:
+      district:
+        type: string
+      id:
+        type: string
+      number:
+        type: string
+      street:
+        type: string
+      zipcode:
+        type: string
+    type: object
+  users.UserRequest:
+    properties:
+      address:
+        type: string
+      age:
+        type: integer
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    required:
+    - age
+    - email
+    - name
+    - password
+    type: object
+  users.UserResponse:
+    properties:
+      address:
+        type: string
+      age:
+        type: integer
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Api to maintain and manage users data
+  title: Users API
+  version: "1.0"
+paths:
+  /users:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/users.UserResponse'
+    post:
+      parameters:
+      - description: Request Body
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/users.UserRequest'
+      responses:
+        "201":
+          description: Created
+  /users/{id}:
+    get:
+      parameters:
+      - description: User Identifier
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/users.UserResponse'
+  /users/{userId}/address:
+    get:
+      parameters:
+      - description: User Identifier
+        in: path
+        name: userId
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/address.AddressResponse'
+            type: array
+    post:
+      parameters:
+      - description: User Identifier
+        in: path
+        name: userId
+        required: true
+        type: string
+      - description: Request Body
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/address.AddressRequest'
+      responses:
+        "201":
+          description: Created
+  /users/{userId}/address/{adressId}:
+    get:
+      parameters:
+      - description: User Identifier
+        in: path
+        name: userId
+        required: true
+        type: string
+      - description: Address Identifier
+        in: path
+        name: adressId
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/address.AddressResponse'
+swagger: "2.0"

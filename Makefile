@@ -15,3 +15,6 @@ docker-up:
 
 docker-down:
 	@docker-compose down
+
+documentation:
+	@swag init -g cmd/main.go --outputTypes yaml

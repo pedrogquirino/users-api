@@ -19,6 +19,10 @@ func NewGetAddresssHandler(processor address.GetAddressProcessor) *GetAddresssHa
 	}
 }
 
+// @Param userId path string true "User Identifier"
+// @Param adressId path string true "Address Identifier"
+// @Success 200 {object} address.AddressResponse
+// @Router /users/{userId}/address/{adressId} [get]
 func (h GetAddresssHandler) GetAddress(c echo.Context) error {
 	ctx := context.Background()
 	userId := c.Param("userId")

@@ -16,6 +16,9 @@ type SaveUserHandler struct {
 	processor users.SaveUserProcessor
 }
 
+// @Param RequestBody body users.UserRequest true "Request Body""
+// @Success 201
+// @Router /users [post]
 func NewSaveUserHandler(options *domain.Options, processor users.SaveUserProcessor) *SaveUserHandler {
 	return &SaveUserHandler{
 		validator: options.Validator,

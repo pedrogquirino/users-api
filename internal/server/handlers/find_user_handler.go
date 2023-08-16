@@ -19,6 +19,8 @@ func NewFindUserHandler(processor users.FindUserProcessor) *FindUserHandler {
 	}
 }
 
+// @Success 200 {object} users.UserResponse
+// @Router /users [get]
 func (h FindUserHandler) FindUser(c echo.Context) error {
 	ctx := context.Background()
 	users, err := h.processor.ProcessRequest(ctx)

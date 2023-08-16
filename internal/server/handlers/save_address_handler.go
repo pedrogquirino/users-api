@@ -23,6 +23,10 @@ func NewSaveAddressHandler(options *domain.Options, processor address.SaveAddres
 	}
 }
 
+// @Param userId path string true "User Identifier"
+// @Param RequestBody body address.AddressRequest true "Request Body""
+// @Success 201
+// @Router /users/{userId}/address [post]
 func (h SaveAddressHandler) SaveAddress(c echo.Context) error {
 	ctx := context.Background()
 	var addressRequest address.AddressRequest

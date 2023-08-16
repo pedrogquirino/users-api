@@ -27,6 +27,9 @@ func NewGetUsersHandler(processor users.GetUsersProcessor) *GetUsersHandler {
 	}
 }
 
+// @Param id path string true "User Identifier"
+// @Success 200 {object} users.UserResponse
+// @Router /users/{id} [get]
 func (h GetUsersHandler) GetUsers(c echo.Context) error {
 	ctx := context.Background()
 	userId := c.Param("id")
