@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run APP",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/cmd/main.go",
+      "env": {
+        "HTTP_PORT":"3000",
+        "DB_HOST":"localhost",
+        "DB_NAME":"usersapi",
+        "DB_USER":"postgres",
+        "DB_PASSWORD":"api",
+        "SSL_MODE": "disable",
+      },
+
+    }
+  ]
+}

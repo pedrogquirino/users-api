@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+  postgres:
+    image: pedroquirino/postgres_usersapi
+    ports:
+      - '5432:5432'
+    container_name: postgres
+    environment:
+      - POSTGRES_PASSWORD=api
+    restart: always
+    networks:
+      - mynet
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  usersapi:
+    build: .
+    ports:
+      - '3000:3000'
+    container_name: usersapi
+    environment:
+      - HTTP_PORT=3000
+      - DB_HOST=postgres
+      - DB_NAME=usersapi
+      - SSL_MODE=disable
+      - DB_USER=postgres
+      - DB_PASSWORD=api
+    networks:
+      - mynet
+
+volumes:
+  pgdata:
+
+networks:
+  mynet:
+    driver: bridge
